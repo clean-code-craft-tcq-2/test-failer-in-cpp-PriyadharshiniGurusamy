@@ -3,16 +3,37 @@
 
 const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
 const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-MajorColorCount = sizeof(majorColor)/sizeof(majorColor[0]);
-MinorColorCount = sizeof(minorColor)/sizeof(minorColor[0]);
+int MajorColorCount = sizeof(majorColor)/sizeof(majorColor[0]);
+int MinorColorCount = sizeof(minorColor)/sizeof(minorColor[0]);
+
+
+std::string getColorPair(int pairNumber)
+{
+    return getMajorColorofPair(pairNumber) + "|" + getMinorColorofPair(pairNumber);
+}
+
+std::string getMajorColorofPair(int pairNumber)
+{
+    int zerobasedIndex = pairNumber - 1;
+    majorColorIndex = zerobasedIndex/MajorColorCount;
+    return majorColor[majorColorIndex];
+}
+
+
+std::string getMinorColorofPair(int pairNumber)
+{
+    int zerobasedIndex = pairNumber - 1;
+    minorColorIndex = zerobasedIndex/MinorColorCount;
+    return minorColor[minorColorIndex];
+}
 
 int printColorMap() {
-    for(int i = 0; i < 25;) {
+    int i;
+    for(i = 0; i < 25; i++) {
         std::string colorPair = getColorPair(i);
         if(!colorPair.empty())
         {
             std::cout << i << "|" << colorPair;
-            i++;
         }
         else
         {
@@ -21,26 +42,6 @@ int printColorMap() {
         }
     }
     return i;
-}
-
-std::string getColorPair(int pairNumber)
-{
-    std::string colorPair = getMajorColorofPair(pairNumber) + "|" + getMinorColorofPair(pairNumber);
-}
-
-std::string getMajorColorofPair(int pairNumber)
-{
-    int zerobasedIndex = pairNumber - 1;
-    majorColorIndex = zerobasedIndex/MajorColorCount;
-    return std::string majorcolor = majorColor[majorColorIndex];
-}
-
-
-std::string getMinorColorofPair(int pairNumber)
-{
-    int zerobasedIndex = pairNumber - 1;
-    minorColorIndex = zerobasedIndex/MinorColorCount;
-    return std::string minorcolor = minorColor[minorColorIndex];
 }
 
 int main() {
