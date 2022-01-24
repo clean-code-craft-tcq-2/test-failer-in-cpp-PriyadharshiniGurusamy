@@ -17,7 +17,7 @@ std::string getMajorColorofPair(int pairNumber)
 std::string getMinorColorofPair(int pairNumber)
 {
     int zerobasedIndex = pairNumber - 1;
-    int minorColorIndex = zerobasedIndex/MinorColorCount;
+    int minorColorIndex = zerobasedIndex % MinorColorCount;
     return minorColor[minorColorIndex];
 }
 std::string getColorPair(int pairNumber)
@@ -31,7 +31,7 @@ int printColorMap() {
         std::string colorPair = getColorPair(i);
         if(!colorPair.empty())
         {
-            std::cout << i << "|" << colorPair;
+            std::cout << i << "|" << colorPair<< "\n";
         }
         else
         {
