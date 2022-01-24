@@ -25,7 +25,7 @@ std::string getColorPair(int pairNumber)
     return getMajorColorofPair(pairNumber) + "|" + getMinorColorofPair(pairNumber);
 }
 
-int printColorMap() {
+int printColorMap(std::string(*getColorPair(int pairNum)) {
     int i;
     for(i = 0; i < 25; i++) {
         std::string colorPair = getColorPair(i);
@@ -43,7 +43,7 @@ int printColorMap() {
 }
 
 int main() {
-    int result = printColorMap();
+    int result = printColorMap(getColorPair);
     assert(result == 25);
     std::cout << "All is well (maybe!)\n";
     return 0;
