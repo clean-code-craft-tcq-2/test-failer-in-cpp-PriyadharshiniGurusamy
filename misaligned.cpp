@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <assert.h>
 
 const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
@@ -34,7 +35,7 @@ std::string getColorPair(int pairNumber)
 {
     std::string majorColorPair = getMajorColorofPair(pairNumber);
     int spaceTobeAdded = MajorColorMaxlen - strlen(majorColorPair) + 2 //2 spacs offset
-    for (; spaceTobeAdded < 0 ; spaceTobeAdded--)
+    for (; spaceTobeAdded > 0 ; spaceTobeAdded--)
     {
         majorColorPair = majorColorPair+" "
     }
