@@ -7,16 +7,16 @@ const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
 const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 int MajorColorCount = sizeof(majorColor)/sizeof(majorColor[0]);
 int MinorColorCount = sizeof(minorColor)/sizeof(minorColor[0]);
-uint8 getMaxlengthofMajorColors()
+uint getMaxlengthofMajorColors()
 {
-    uint8 maxlength = 0;
+    uint maxlength = 0;
     for(int i = 0; i < MajorColorCount ; i++)
     {
         maxlength = maxlength < strlen(majorColor[i])? strlen(majorColor[i]): maxlength;
     }
     return maxlength;
 }
-uint8 MajorColorMaxlen = getMaxlengthofMajorColors();
+uint MajorColorMaxlen = getMaxlengthofMajorColors();
 
 std::string getMajorColorofPair(int pairNumber)
 {
@@ -38,7 +38,7 @@ std::string getColorPair(int pairNumber)
     int spaceTobeAdded = static_cast<int>(MajorColorMaxlen - majorColorPair.length() + 2); //2 spacs offset
     for (; spaceTobeAdded > 0 ; spaceTobeAdded--)
     {
-        majorColorPair = majorColorPair+" "
+        majorColorPair = majorColorPair+" ";
     }
     return majorColorPair + "|  " + getMinorColorofPair(pairNumber);
 }
