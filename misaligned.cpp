@@ -5,7 +5,16 @@ const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
 const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 int MajorColorCount = sizeof(majorColor)/sizeof(majorColor[0]);
 int MinorColorCount = sizeof(minorColor)/sizeof(minorColor[0]);
-
+int getMaxlengthofMajorColors()
+{
+    int maxlength = 0;
+    for(int i = 0; i < MajorColorCount ; i++)
+    {
+        maxlength = maxlength < strlen(majorColor[i])? strlen(majorColor[i]): maxlength;
+    }
+    return maxlength;
+}
+int MajorColorMaxlen = getMaxlengthofMajorColors();
 
 std::string getMajorColorofPair(int pairNumber)
 {
@@ -20,9 +29,16 @@ std::string getMinorColorofPair(int pairNumber)
     int minorColorIndex = zerobasedIndex % MinorColorCount;
     return minorColor[minorColorIndex];
 }
+
 std::string getColorPair(int pairNumber)
 {
-    return getMajorColorofPair(pairNumber) + "|" + getMinorColorofPair(pairNumber);
+    std::string majorColorPair = getMajorColorofPair(pairNumber);
+    int spaceTobeAdded = MajorColorMaxlen - strlen(majorColorPair) + 2 //2 spacs offset
+    for (; spaceTobeAdded < 0 ; spaceTobeAdded--)
+    {
+        majorColorPair = majorColorPair+" "
+    }
+    return majorColorPair + "|  " + getMinorColorofPair(pairNumber);
 }
 
 int printColorMap(std::string(*getColorPair)(int pairNum)) {
@@ -31,7 +47,7 @@ int printColorMap(std::string(*getColorPair)(int pairNum)) {
         std::string colorPair = getColorPair(i);
         if(!colorPair.empty())
         {
-            std::cout << i << "|" << colorPair<< "\n";
+            std::cout << i << "  |  " << colorPair<< "\n";
         }
         else
         {
