@@ -6,7 +6,7 @@ int alertFailureCount = 0;
 int networkAlertStub(float celcius) {
     std::cout << "ALERT: Temperature is " << celcius << " celcius.\n";
     int retVal = 0;
-    retVal = (celcius < 98.7)? 200 : 500;   
+    retVal = (celcius < 300)? 200 : 500;   
     // Return 200 for ok
     // Return 500 for not-ok
     // stub always succeeds and returns 200
@@ -16,7 +16,7 @@ int networkAlertStub(float celcius) {
 int networkAlert(float celcius) {
     std::cout << "ALERT: Temperature is " << celcius << " celcius.\n";
     int retVal = 0;
-    retVal = (celcius < 98.7)? 200 : 500;
+    retVal = (celcius < 300)? 200 : 500;
     return retVal;
 }
 
